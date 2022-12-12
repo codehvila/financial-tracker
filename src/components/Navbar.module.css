@@ -1,0 +1,35 @@
+.navbar {
+  width: 100%;
+  background-color: #282c34;
+  padding: 20px 10px;
+  color: white;
+  box-sizing: border-box;
+  height: 20%;
+}
+
+.navbar ul {
+  display: flex;
+  max-width: 60rem;
+  margin: 0 auto;
+  align-items: baseline;
+}
+
+.navbar .title {
+  margin: 0 auto 0 0;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  font-size: calc(0.8rem + 0.6rem);
+}
+
+.navbar button, .navbar a {
+  margin-left: 1rem;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar ul li:first-child {
+  margin-left: -1rem;
+}
