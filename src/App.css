@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+.error {
+  font-size: small;
+  padding: 1rem;
+  background-color: #888;
+  color: #eee;
+  max-width: 33rem;
+  margin: 0 auto 2rem;
+  z-index: 1000;
+}
