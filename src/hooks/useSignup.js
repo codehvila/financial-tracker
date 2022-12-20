@@ -5,9 +5,12 @@ import {
   updateProfile,
 } from "../firebase/firebase.config";
 
+import { useAuthContext } from "./useAuthContext";
+
 export function useSignup() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  const { dispatch } = useAuthContext();
 
   const signup = async (email, password, displayName) => {
     setErrorMessage(null);
@@ -39,6 +42,8 @@ export function useSignup() {
           // console.log("An error occured updating user profile: ", err.message);
           setIsPending(false);
         });
+
+      dispatch({ type: "LOGIN", payload: res.user });
     } catch (err) {
       // console.log("Try Catch Error: ", err.message);
       setErrorMessage(err.message);
