@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   projectAuth,
   createUserWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
 import { useAuthContext } from "./useAuthContext";
 
 export function useSignup() {
+  const [isCancelled, setIsCancelled] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { dispatch } = useAuthContext();
@@ -24,7 +25,7 @@ export function useSignup() {
         email,
         password
       );
-      // console.log(res.user);
+      console.log(res.user);
 
       if (!res) {
         throw new Error("Could not complete signup!");
@@ -32,24 +33,36 @@ export function useSignup() {
 
       updateProfile(projectAuth.currentUser, { displayName })
         .then(() => {
-          // console.log("User profile updated!");
-          // console.log("Display Name: ", projectAuth.currentUser.displayName);
-          setIsPending(false);
-          setErrorMessage(null);
+          dispatch({ type: "LOGIN", payload: res.user });
+
+          if (!isCancelled) {
+            // console.log("User profile updated!");
+            // console.log("Display Name: ", projectAuth.currentUser.displayName);
+            setIsPending(false);
+            setErrorMessage(null);
+          }
         })
         .catch((err) => {
-          setErrorMessage(err.message);
-          // console.log("An error occured updating user profile: ", err.message);
-          setIsPending(false);
+          if (!isCancelled) {
+            // console.log("An error occured updating user profile: ", err.message);
+            setErrorMessage(err.message);
+            setIsPending(false);
+          }
         });
-
-      dispatch({ type: "LOGIN", payload: res.user });
     } catch (err) {
-      // console.log("Try Catch Error: ", err.message);
-      setErrorMessage(err.message);
-      setIsPending(false);
+      if (!isCancelled) {
+        console.log("Try Catch Error Code: ", err.code);
+        console.log("Try Catch Error Message: ", err.message);
+        setErrorMessage(err.message);
+        setIsPending(false);
+      }
     }
   };
+
+  useEffect(() => {
+    setIsCancelled(false);
+    return () => setIsCancelled(true);
+  }, []);
 
   return { errorMessage, isPending, signup };
 }
