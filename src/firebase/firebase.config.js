@@ -4,6 +4,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -21,4 +22,10 @@ const app = initializeApp(firebaseConfig);
 // init service
 const projectAuth = getAuth(app);
 
-export { app, projectAuth, createUserWithEmailAndPassword, updateProfile };
+export {
+  app,
+  projectAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signInWithEmailAndPassword,
+};
