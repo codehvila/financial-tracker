@@ -1,4 +1,4 @@
-.Principal {
+.wrapper {
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -6,4 +6,85 @@
   justify-content: center;
   font-size: calc(10px + 3vmin);
   color: #333;
+}
+.title {
+  width: 100%;
+  font-size: large;
+}
+
+.container {
+  /* border: 1px solid red; delete */
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  max-width: 60rem; /* max-width: 960px / 16px = 60 rem */
+  height: 80%;
+  margin: 15% auto;
+}
+
+.title:before {
+  content: "♥ ";
+}
+.title:after {
+  content: " ♥";
+}
+
+.content {
+  /* border: 1px solid green; delete */
+  padding-right: 2rem;
+}
+
+.sidebar {
+  /* border: 1px solid blue; delete */
+  padding-left: 2rem;
+}
+
+
+.sidebar form {
+  padding: 20px;
+  background: #1f9751;
+  border-radius: 10px;
+}
+
+.sidebar input, .sidebar select {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  border: 0px solid;
+  border-radius: 4px;
+  font-size: 1.0rem;
+  color: #333;
+}
+
+.sidebar label {
+  display: block;
+  margin: 0 auto 20px;
+  color: #eee;
+}
+
+.sidebar button {
+  width: 100%;
+  display: block;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid #fff;
+  background-color: #1f9751;
+  border-radius: 2.5rem;
+  font-size: 1rem;
+  color: #eee;
+  cursor: pointer;
+}
+
+.sidebar h3 {
+  margin-bottom: 1.25rem;
+  color: #1f9751;
+}
+
+.sidebar aside {
+  margin-top: 2.5rem;
+  color: #555;
+}
+
+.sidebar aside li {
+  margin: 0.6rem;
 }
