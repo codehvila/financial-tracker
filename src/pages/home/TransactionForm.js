@@ -25,23 +25,66 @@ export default function TransactionForm({ uid }) {
       <form onSubmit={handleOnSubmit}>
         <label>
           <span>Transaction name:</span>
-          <input
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-            required
-            value={name}
-          />
+          {response.isPending ? (
+            <input
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              required
+              value={name}
+              disabled={true}
+              style={{
+                cursor: "not-allowed",
+                backgroundColor: "#f24747",
+                transition: "all 0.8s ease-in-out",
+              }}
+            />
+          ) : (
+            <input
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              required
+              value={name}
+            />
+          )}
         </label>
         <label>
           <span>Amount (€):</span>
-          <input
-            onChange={(e) => setAmount(e.target.value)}
-            type="number"
-            required
-            value={amount}
-          />
+          {response.isPending ? (
+            <input
+              onChange={(e) => setAmount(e.target.value)}
+              type="number"
+              required
+              value={amount}
+              disabled={true}
+              style={{
+                cursor: "not-allowed",
+                backgroundColor: "#f24747",
+                transition: "all 0.8s ease-in-out",
+              }}
+            />
+          ) : (
+            <input
+              onChange={(e) => setAmount(e.target.value)}
+              type="number"
+              required
+              value={amount}
+            />
+          )}
         </label>
-        <button>Add Transaction</button>
+        {response.isPending ? (
+          <button
+            disabled={true}
+            style={{
+              cursor: "not-allowed",
+              backgroundColor: "#f24747",
+              transition: "all 0.8s ease-in-out",
+            }}
+          >
+            Add Transaction
+          </button>
+        ) : (
+          <button>Add Transaction</button>
+        )}
       </form>
       {response.error && <p>{response.error}</p>}
     </>
