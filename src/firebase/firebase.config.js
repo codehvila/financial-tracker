@@ -12,6 +12,7 @@ import {
   Timestamp,
   addDoc,
   collection,
+  onSnapshot,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -42,4 +43,5 @@ export {
   db,
   addDoc,
   collection,
+  onSnapshot,
 };
