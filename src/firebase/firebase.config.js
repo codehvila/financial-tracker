@@ -13,6 +13,8 @@ import {
   addDoc,
   collection,
   onSnapshot,
+  query,
+  where,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -44,4 +46,6 @@ export {
   addDoc,
   collection,
   onSnapshot,
+  query,
+  where,
 };

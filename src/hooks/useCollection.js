@@ -1,13 +1,27 @@
-import { useState, useEffect } from "react";
-import { onSnapshot, collection, db } from "../firebase/firebase.config";
+import { useState, useEffect, useRef } from "react";
+import {
+  onSnapshot,
+  collection,
+  db,
+  query,
+  where,
+} from "../firebase/firebase.config";
 
-export function useCollection(collectionName) {
+export function useCollection(collectionName, _query) {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
 
+  const { current: q } = useRef(_query);
+
   useEffect(() => {
+    let ref = collection(db, collectionName);
+
+    if (q) {
+      ref = query(collection(db, collectionName), where(...q));
+    }
+
     const unsubscribe = onSnapshot(
-      collection(db, collectionName),
+      ref,
       (snapshot) => {
         let results = [];
         snapshot.docs.forEach((doc) => {
@@ -23,7 +37,7 @@ export function useCollection(collectionName) {
     );
 
     return () => unsubscribe();
-  }, [collectionName]);
+  }, [collectionName, q]);
 
   return { documents, error };
 }

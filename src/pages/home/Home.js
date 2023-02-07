@@ -6,7 +6,11 @@ import styles from "./Home.module.css";
 
 export default function Home() {
   const { user } = useAuthContext();
-  const { documents, error } = useCollection("transactions");
+  const { documents, error } = useCollection("transactions", [
+    "uid",
+    "==",
+    user.uid,
+  ]);
 
   return (
     <>
@@ -15,7 +19,7 @@ export default function Home() {
         <div className={styles.content}>
           <h3>transaction list</h3>
 
-          {error && <p>error</p>}
+          {error && <p>{error}</p>}
           {documents && <TransactionList transactions={documents} />}
         </div>
         <div className={styles.sidebar}>
