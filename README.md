@@ -114,3 +114,9 @@ Choose `Firestore: configure security rules and indexes files for Firestore, Hos
 
 `> firebase deploy --only firestore` <kbd>ENTER ↩</kbd>
 
+---
+
+## **Build the react app**
+
+`> npm run build` <kbd>ENTER</kbd>
+
