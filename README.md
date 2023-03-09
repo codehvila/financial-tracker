@@ -68,3 +68,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+---
+
+## **Setup Firestore Rules**
+
+### Instal firebase-tools
+`> npm install -g firebase-tools` <kbd>ENTER</kbd>
+
+### Login to firebase
+`> firebase login` <kbd>ENTER</kbd>
+
+### Place you into root working directory
+
+### Configure firebase
+`> firebase init` <kbd>ENTER</kbd>
+
+### Choose firebase features
+Choose `Firestore: configure security rules and indexes files for Firestore, Hosting: configure files for Firebase Hosting and (optionally) set up GitHub Action deploys` <kbd>ENTER</kbd>
+
+### Associate project directory with a Firebase project
+`Use and existing project`
+
+`Select a default Firebase project for this directory: financial-tracker-*****` <kbd>ENTER</kbd>
+
+### Firestore Rules Setup
+`Choose file name to use: firestore.rules` <kbd>ENTER</kbd>
+
+### Firestore Indexes Setup
+`Choose file name to use: firestore.indexes.json` <kbd>ENTER</kbd>
+
+### Firestore Setup Hosting
+`Choose public directory name: build` <kbd>ENTER</kbd>
+
+`Configure single-page app (rewrite all urls to /index.html): Yes` <kbd>ENTER</kbd>
+
+`Setup  automatic builds and deploys with GitHub: No` <kbd>ENTER</kbd>
+
+### End
+
+---
+
+## **Deploy Firestore Rules**
+
+`> firebase deploy --only firestore` <kbd>ENTER ↩</kbd>
+
