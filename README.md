@@ -120,3 +120,9 @@ Choose `Firestore: configure security rules and indexes files for Firestore, Hos
 
 `> npm run build` <kbd>ENTER</kbd>
 
+---
+
+## Deploy firebase
+
+`> firebase deploy` <kbd>ENTER</kbd>
+
