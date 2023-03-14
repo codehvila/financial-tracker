@@ -37,7 +37,7 @@ export default function Home() {
       <div className={styles.title}>Home Finance Tracker</div>
       <div className={styles.container}>
         <div className={styles.content}>
-          <h3>transaction list</h3>
+          <h3>Transaction List</h3>
 
           {error && <p>{error}</p>}
           {documents && orderBy && (
